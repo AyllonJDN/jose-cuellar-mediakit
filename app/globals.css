@@ -1,26 +1,153 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --ink: #06242d;
+  --ink-2: #0a3444;
+  --foam: #f3fafa;
+  --paper: #fbfdfd;
+  --paper-2: #eaf6f7;
+  --teal: #0c7a93;
+  --cyan: #19b7cf;
+  --aqua: #5fe3cf;
+  --gold: #e7c27a;
+  --gradient: linear-gradient(120deg, #073a4a 0%, #0c7a93 45%, #19c7d6 80%, #5fe3cf 100%);
+  --gradient-soft: linear-gradient(135deg, #0c7a93 0%, #19b7cf 55%, #6be9d6 100%);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-foam: var(--foam);
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-teal: var(--teal);
+  --color-cyan: var(--cyan);
+  --color-aqua: var(--aqua);
+  --color-gold: var(--gold);
+  --font-display: "Fraunces", "Georgia", serif;
+  --font-sans: "Inter", "Helvetica Neue", Arial, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html, body {
+  overflow-x: hidden;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+}
+
+/* Plain solid colors (not background-clip: text gradients) on purpose:
+   the page is captured to PDF with html2canvas, which does not support
+   background-clip: text — it would render as a solid block instead of
+   clipped letters. A solid accent color keeps the web view and the PDF
+   export visually identical. */
+.accent-word {
+  font-style: italic;
+  color: var(--teal);
+}
+
+/* For use directly on the dark/teal gradient backgrounds, where the
+   teal accent color would lose contrast. */
+.accent-word-dark {
+  font-style: italic;
+  color: var(--gold);
+}
+
+/* ---------- Stacked sheet sections ---------- */
+.sheet {
+  position: relative;
+  border-radius: 28px 28px 0 0;
+}
+.sheet-pull {
+  margin-top: -28px;
+}
+
+/* ---------- Reveal on scroll ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- Water wave divider ---------- */
+.wave-divider {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.wave-anim {
+  animation: wave-drift 10s ease-in-out infinite;
+  transform-origin: center;
+}
+@keyframes wave-drift {
+  0%, 100% { transform: translateX(0) translateY(0); }
+  50% { transform: translateX(-2%) translateY(3px); }
+}
+
+/* ---------- Ripple glow blobs ---------- */
+.ripple {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(60px);
+  pointer-events: none;
+}
+.ripple-pulse {
+  animation: ripple-pulse 7s ease-in-out infinite;
+}
+@keyframes ripple-pulse {
+  0%, 100% { opacity: 0.35; transform: scale(1); }
+  50% { opacity: 0.55; transform: scale(1.08); }
+}
+
+/* ---------- Chip / pill ---------- */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  padding: 0.4em 0.9em;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+}
+
+/* ---------- Table ---------- */
+.rate-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.rate-table th {
+  text-align: left;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(6, 36, 45, 0.5);
+  font-weight: 600;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid rgba(6, 36, 45, 0.12);
+}
+.rate-table td {
+  padding: 1.1rem 0;
+  border-bottom: 1px solid rgba(6, 36, 45, 0.08);
+  vertical-align: top;
+}
+.rate-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* ---------- Print / PDF export ---------- */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: var(--paper) !important;
+  }
 }
