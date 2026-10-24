@@ -1,11 +1,8 @@
 import {
   PERSON,
   BIO,
-  PLATFORMS_BLURB,
   PLATFORMS,
   CAPACITIES,
-  MEDIA_PRESENCE,
-  MEDIA_NOTE,
   RATES,
   RATE_NOTES,
   CONTACT,
@@ -30,25 +27,22 @@ export default function HorizontalDeck() {
         className="relative grid w-full overflow-hidden rounded-[22px] grid-cols-[1.05fr_0.95fr]"
         style={{ aspectRatio: "16 / 9", background: "#fff" }}
       >
-        <div className="relative flex flex-col justify-between overflow-hidden px-10 py-8" style={{ background: "var(--panel-gradient)" }}>
-          <div className="ripple" style={{ width: 280, height: 280, background: "#4fd9cb", top: -120, left: -100 }} />
+        <div className="relative flex flex-col justify-between overflow-hidden px-10 py-8" style={{ background: "var(--ink)" }}>
           <div className="relative flex items-center justify-between">
             <Wordmark dark />
-            <span className="text-[0.68rem] font-semibold tracking-[0.1em]" style={{ color: "rgba(255,255,255,0.7)" }}>
+            <span className="text-[0.68rem] font-semibold tracking-[0.1em]" style={{ color: "rgba(255,255,255,0.55)" }}>
               {YEAR}
             </span>
           </div>
 
           <div className="relative">
-            <p className="text-[0.85rem]" style={{ fontFamily: "var(--font-display)", fontStyle: "italic", color: "rgba(255,255,255,0.85)" }}>
+            <p className="text-[0.85rem]" style={{ fontFamily: "var(--font-display)", fontStyle: "italic", color: "rgba(255,255,255,0.7)" }}>
               {PERSON.role}
             </p>
-            <h1 className="mt-2 text-[2.9rem] leading-[0.92] font-extrabold text-white" style={{ letterSpacing: "-0.02em" }}>
-              José
-              <br />
-              Cuellar
-            </h1>
-            <p className="mt-3 text-[1rem]" style={{ fontFamily: "var(--font-display)", fontStyle: "italic", color: "#e9c77e" }}>
+            <p className="display-statement mt-2 text-[2.9rem]" style={{ color: "#fff" }}>
+              José <em style={{ color: "#8be9df" }}>Cuellar</em>
+            </p>
+            <p className="mt-3 text-[1rem]" style={{ fontFamily: "var(--font-display)", fontStyle: "italic", color: "#8be9df" }}>
               “{PERSON.tagline}”
             </p>
           </div>
@@ -134,71 +128,9 @@ export default function HorizontalDeck() {
         </div>
       </section>
 
-      {/* ================= SLIDE 3 — EDITORIAL STATEMENT BREAK ================= */}
+      {/* ================= SLIDE 3 — TARIFARIO ================= */}
       <section
         id="deck-slide-3"
-        className="relative flex w-full flex-col justify-center overflow-hidden rounded-[22px] px-12 py-8"
-        style={{ aspectRatio: "16 / 9", background: "var(--ink)" }}
-      >
-        <div className="flex items-center justify-between">
-          <Wordmark dark />
-          <span className="text-[0.68rem] font-semibold tracking-[0.1em]" style={{ color: "rgba(255,255,255,0.55)" }}>{YEAR}</span>
-        </div>
-        <div className="mt-8 flex items-start gap-5">
-          <span className="mt-3 text-[1.3rem]" style={{ color: "#8be9df" }} aria-hidden>→</span>
-          <div>
-            <p className="display-statement text-[3.4rem]" style={{ color: "#fff" }}>
-              Todo en tu vida es <em style={{ color: "#8be9df" }}>agua</em>.
-            </p>
-            <p className="mt-4 text-[1rem]" style={{ color: "rgba(255,255,255,0.6)" }}>
-              Y entenderla cambia la manera de actuar.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ================= SLIDE 4 — PRESENCIA EN MEDIOS ================= */}
-      <section
-        id="deck-slide-4"
-        className="relative flex w-full flex-col overflow-hidden rounded-[22px] px-10 py-8"
-        style={{ aspectRatio: "16 / 9", background: "#fff", border: "1px solid var(--line)" }}
-      >
-        <div className="flex items-center justify-between">
-          <Wordmark />
-          <span className="text-[0.68rem] font-semibold tracking-[0.1em]" style={{ color: "var(--ink-faint)" }}>{YEAR}</span>
-        </div>
-
-        <div className="kicker mt-6">02 · Presencia en medios</div>
-        <h2 className="mt-4 text-[1.55rem] leading-[1.1]">
-          <span className="heading-script">Su conocimiento ya circula</span>{" "}
-          <span className="heading-bold">fuera de sus propias redes</span>
-        </h2>
-
-        <div className="mt-7 grid flex-1 grid-cols-4">
-          {MEDIA_PRESENCE.map((m, i) => (
-            <div
-              key={m.medio}
-              className="flex flex-col px-5 first:pl-0"
-              style={{ borderLeft: i > 0 ? "1px solid var(--line)" : "none" }}
-            >
-              <span className="ed-index">0{i + 1}</span>
-              <p className="mt-2 text-[0.92rem] font-bold" style={{ color: "var(--ink)" }}>
-                {m.medio}
-              </p>
-              <p className="mt-1.5 text-[0.78rem] leading-snug" style={{ color: "var(--ink-soft)" }}>
-                {m.nota}
-              </p>
-            </div>
-          ))}
-        </div>
-        <p className="mt-4 text-[0.74rem] italic" style={{ color: "var(--ink-faint)" }}>
-          {MEDIA_NOTE}
-        </p>
-      </section>
-
-      {/* ================= SLIDE 5 — TARIFARIO ================= */}
-      <section
-        id="deck-slide-5"
         className="relative grid w-full overflow-hidden rounded-[22px] grid-cols-[0.75fr_1.25fr]"
         style={{ aspectRatio: "16 / 9", background: "#fff" }}
       >
@@ -208,14 +140,9 @@ export default function HorizontalDeck() {
             <p className="font-display text-[1.7rem] italic leading-[1.05] text-white">Tarifario</p>
             <p className="text-[1.7rem] font-extrabold leading-[1.05] text-white">de colaboraciones</p>
           </div>
-          <div className="relative h-32 w-24 overflow-hidden">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={PERSON.photoCutout}
-              alt={PERSON.name}
-              className="h-full w-full object-contain object-bottom"
-            />
-          </div>
+          <p className="relative text-[0.82rem] font-medium text-white">
+            Instagram · <span style={{ color: "#8be9df" }}>{CONTACT.instagram}</span>
+          </p>
         </div>
 
         <div className="flex flex-col justify-center px-9 py-8">
@@ -244,33 +171,6 @@ export default function HorizontalDeck() {
               </p>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* ================= SLIDE 6 — CONTACTO ================= */}
-      <section
-        id="deck-slide-6"
-        className="relative flex w-full flex-col items-center justify-center overflow-hidden rounded-[22px] px-10 py-8 text-center"
-        style={{ aspectRatio: "16 / 9", background: "var(--panel-gradient)" }}
-      >
-        <div className="ripple" style={{ width: 300, height: 300, background: "#4fd9cb", bottom: -140, right: -100 }} />
-        <div className="absolute left-10 top-8">
-          <Wordmark dark />
-        </div>
-        <div className="absolute right-10 top-8 text-[0.68rem] font-semibold tracking-[0.1em]" style={{ color: "rgba(255,255,255,0.7)" }}>
-          {YEAR}
-        </div>
-
-        <p className="whitespace-pre-line text-[1.5rem] leading-snug text-white" style={{ fontFamily: "var(--font-display)", fontStyle: "italic" }}>
-          {CONTACT.closing}
-        </p>
-        <div className="relative mt-7 flex items-center gap-6">
-          <span className="text-[0.86rem] font-medium text-white">
-            Instagram · <span style={{ color: "#8be9df" }}>{CONTACT.instagram}</span>
-          </span>
-          <span className="text-[0.86rem] font-medium text-white">
-            {CONTACT.emailLabel} · <span style={{ color: "#8be9df" }}>{CONTACT.email}</span>
-          </span>
         </div>
       </section>
     </div>

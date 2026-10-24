@@ -5,7 +5,7 @@ import VerticalDoc from "@/components/VerticalDoc";
 import HorizontalDeck from "@/components/HorizontalDeck";
 import DownloadPdfButton from "@/components/DownloadPdfButton";
 
-const DECK_SLIDE_IDS = ["deck-slide-1", "deck-slide-2", "deck-slide-3", "deck-slide-4", "deck-slide-5", "deck-slide-6"];
+const DECK_SLIDE_IDS = ["deck-slide-1", "deck-slide-2", "deck-slide-3"];
 
 export default function Home() {
   const [tab, setTab] = useState<"vertical" | "horizontal">("vertical");
