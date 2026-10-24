@@ -2,8 +2,8 @@
 
 :root {
   --ink: #15262b;
-  --ink-soft: rgba(21, 38, 43, 0.68);
-  --ink-faint: rgba(21, 38, 43, 0.45);
+  --ink-soft: rgba(21, 38, 43, 0.74);
+  --ink-faint: rgba(21, 38, 43, 0.6);
   --paper: #fffefc;
   --line: rgba(21, 38, 43, 0.14);
 

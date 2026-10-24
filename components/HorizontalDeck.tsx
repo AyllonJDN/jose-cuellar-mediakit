@@ -6,17 +6,7 @@ import {
   RATES,
   RATE_NOTES,
   CONTACT,
-  YEAR,
 } from "@/lib/content";
-
-function Wordmark({ dark = false }: { dark?: boolean }) {
-  return (
-    <span className="wordmark text-[0.82rem]" style={{ color: dark ? "#fff" : "var(--ink)" }}>
-      JOSÉ{" "}
-      <span style={{ color: dark ? "#8be9df" : "var(--accent)" }}>CUELLAR</span>
-    </span>
-  );
-}
 
 export default function HorizontalDeck() {
   return (
@@ -28,19 +18,12 @@ export default function HorizontalDeck() {
         style={{ aspectRatio: "16 / 9", background: "#fff" }}
       >
         <div className="relative flex flex-col justify-between overflow-hidden px-10 py-8" style={{ background: "var(--ink)" }}>
-          <div className="relative flex items-center justify-between">
-            <Wordmark dark />
-            <span className="text-[0.68rem] font-semibold tracking-[0.1em]" style={{ color: "rgba(255,255,255,0.55)" }}>
-              {YEAR}
-            </span>
-          </div>
-
           <div className="relative">
-            <p className="text-[0.85rem]" style={{ fontFamily: "var(--font-display)", fontStyle: "italic", color: "rgba(255,255,255,0.7)" }}>
+            <p className="text-[0.85rem]" style={{ fontFamily: "var(--font-display)", fontStyle: "italic", color: "rgba(255,255,255,0.8)" }}>
               {PERSON.role}
             </p>
             <p className="display-statement mt-2 text-[2.9rem]" style={{ color: "#fff" }}>
-              José <em style={{ color: "#8be9df" }}>Cuellar</em>
+              José <span style={{ color: "#8be9df" }}>Cuellar</span>
             </p>
             <p className="mt-3 text-[1rem]" style={{ fontFamily: "var(--font-display)", fontStyle: "italic", color: "#8be9df" }}>
               “{PERSON.tagline}”
@@ -49,24 +32,19 @@ export default function HorizontalDeck() {
 
           <div className="relative grid grid-cols-2 gap-4 pt-4" style={{ borderTop: "1px solid rgba(255,255,255,0.2)" }}>
             <div>
-              <p className="text-[0.58rem] font-bold tracking-[0.1em]" style={{ color: "rgba(255,255,255,0.55)" }}>CREADOR DE</p>
+              <p className="text-[0.58rem] font-bold tracking-[0.1em]" style={{ color: "rgba(255,255,255,0.7)" }}>CREADOR DE</p>
               <p className="mt-0.5 text-[0.82rem] font-semibold text-white">{PERSON.creatorOf}</p>
             </div>
             <div>
-              <p className="text-[0.58rem] font-bold tracking-[0.1em]" style={{ color: "rgba(255,255,255,0.55)" }}>MEDIA KIT</p>
+              <p className="text-[0.58rem] font-bold tracking-[0.1em]" style={{ color: "rgba(255,255,255,0.7)" }}>MEDIA KIT</p>
               <p className="mt-0.5 text-[0.82rem] font-semibold text-white">Colaboraciones</p>
             </div>
           </div>
         </div>
 
-        <div className="relative flex h-full items-end justify-center overflow-hidden" style={{ background: "var(--accent-pale)" }}>
+        <div className="relative flex h-full items-end justify-center overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={PERSON.photoCutout}
-            alt={PERSON.name}
-            className="h-[108%] w-auto object-contain object-bottom"
-            style={{ filter: "drop-shadow(0 20px 26px rgba(10,167,189,0.3))" }}
-          />
+          <img src={PERSON.photo} alt={PERSON.name} className="h-full w-full object-cover" />
         </div>
       </section>
 
@@ -77,13 +55,8 @@ export default function HorizontalDeck() {
         style={{ aspectRatio: "16 / 9", background: "#fff", border: "1px solid var(--line)" }}
       >
         <div className="flex flex-col justify-center pr-6">
-          <div className="flex items-center justify-between">
-            <Wordmark />
-            <span className="text-[0.68rem] font-semibold tracking-[0.1em]" style={{ color: "var(--ink-faint)" }}>{YEAR}</span>
-          </div>
-
-          <span className="eyebrow-pill mt-6 w-fit">01 · Quién es</span>
-          <h2 className="mt-4 text-[1.55rem] leading-[1.1]">
+          <p className="text-[0.95rem] font-semibold" style={{ color: "var(--accent-deep)" }}>¿Quién es José Cuellar?</p>
+          <h2 className="mt-3 text-[1.55rem] leading-[1.1]">
             <span className="heading-script">Del sector del agua</span>
             <br />
             <span className="heading-bold">a una conversación pública</span>
@@ -135,7 +108,6 @@ export default function HorizontalDeck() {
         style={{ aspectRatio: "16 / 9", background: "#fff" }}
       >
         <div className="relative flex flex-col justify-between overflow-hidden px-7 py-8" style={{ background: "var(--panel-gradient)" }}>
-          <Wordmark dark />
           <div className="relative">
             <p className="font-display text-[1.7rem] italic leading-[1.05] text-white">Tarifario</p>
             <p className="text-[1.7rem] font-extrabold leading-[1.05] text-white">de colaboraciones</p>
