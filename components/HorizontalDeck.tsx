@@ -16,7 +16,7 @@ export default function HorizontalDeck() {
         className="relative grid w-full overflow-hidden rounded-[22px] grid-cols-[1.05fr_0.95fr]"
         style={{ aspectRatio: "16 / 9", background: "#fff" }}
       >
-        <div className="relative flex flex-col justify-center gap-10 overflow-hidden px-10 py-8" style={{ background: "var(--ink)" }}>
+        <div className="relative flex flex-col justify-between overflow-hidden px-10 py-8" style={{ background: "var(--ink)" }}>
           <div className="relative">
             <p className="text-[0.85rem]" style={{ fontFamily: "var(--font-display)", fontStyle: "italic", color: "rgba(255,255,255,0.8)" }}>
               {PERSON.role}
@@ -99,8 +99,8 @@ export default function HorizontalDeck() {
         className="relative grid w-full overflow-hidden rounded-[22px] grid-cols-[0.75fr_1.25fr]"
         style={{ aspectRatio: "16 / 9", background: "#fff" }}
       >
-        <div className="relative flex flex-col justify-between overflow-hidden px-7 py-8" style={{ background: "var(--panel-gradient)" }}>
-          <div className="relative">
+        <div className="relative flex h-full flex-col overflow-hidden px-7 py-8" style={{ background: "var(--panel-gradient)" }}>
+          <div className="relative flex flex-1 flex-col justify-center">
             <p className="font-display text-[1.7rem] italic leading-[1.05] text-white">Tarifario</p>
             <p className="text-[1.7rem] font-extrabold leading-[1.05] text-white">de colaboraciones</p>
           </div>
