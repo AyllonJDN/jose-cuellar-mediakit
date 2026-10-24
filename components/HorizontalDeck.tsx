@@ -27,7 +27,7 @@ export default function HorizontalDeck() {
       {/* ================= SLIDE 1 — COVER ================= */}
       <section
         id="deck-slide-1"
-        className="relative grid w-full overflow-hidden rounded-[22px] grid-cols-[1.15fr_0.85fr]"
+        className="relative grid w-full overflow-hidden rounded-[22px] grid-cols-[1.05fr_0.95fr]"
         style={{ aspectRatio: "16 / 9", background: "#fff" }}
       >
         <div className="relative flex flex-col justify-between overflow-hidden px-10 py-8" style={{ background: "var(--panel-gradient)" }}>
@@ -43,7 +43,7 @@ export default function HorizontalDeck() {
             <p className="text-[0.85rem]" style={{ fontFamily: "var(--font-display)", fontStyle: "italic", color: "rgba(255,255,255,0.85)" }}>
               {PERSON.role}
             </p>
-            <h1 className="mt-2 text-[2.6rem] leading-[0.94] font-extrabold text-white" style={{ letterSpacing: "-0.02em" }}>
+            <h1 className="mt-2 text-[2.9rem] leading-[0.92] font-extrabold text-white" style={{ letterSpacing: "-0.02em" }}>
               José
               <br />
               Cuellar
@@ -65,9 +65,14 @@ export default function HorizontalDeck() {
           </div>
         </div>
 
-        <div className="relative h-full w-full">
+        <div className="relative flex h-full items-end justify-center overflow-hidden" style={{ background: "var(--accent-pale)" }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={PERSON.photo} alt={PERSON.name} className="h-full w-full object-cover" />
+          <img
+            src={PERSON.photoCutout}
+            alt={PERSON.name}
+            className="h-[108%] w-auto object-contain object-bottom"
+            style={{ filter: "drop-shadow(0 20px 26px rgba(10,167,189,0.3))" }}
+          />
         </div>
       </section>
 
@@ -102,26 +107,25 @@ export default function HorizontalDeck() {
         </div>
 
         <div className="relative flex h-full items-center justify-center">
-          {/* Pills are positioned relative to THIS fixed-size box (the photo
-              itself), not the full-height column — otherwise their offsets
-              are measured from the top of the whole slide instead of the
-              photo's edges. */}
-          <div className="relative h-[12rem] w-[12rem]">
-            <div
-              className="h-full w-full overflow-hidden rounded-full"
-              style={{ border: "5px solid #fff", boxShadow: "0 20px 40px -16px rgba(10,167,189,0.4)" }}
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={PERSON.photo} alt={PERSON.name} className="h-full w-full object-cover" />
-            </div>
+          {/* Pills hang off a fixed-size box sized to the photo itself —
+              not the full-height column — so their offsets read from the
+              photo's edges, matching the vertical layout's treatment. */}
+          <div className="relative h-[20rem] w-[15rem]">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={PERSON.photoCutout}
+              alt={PERSON.name}
+              className="h-full w-full object-contain object-bottom"
+              style={{ filter: "drop-shadow(0 18px 26px rgba(10,167,189,0.3))" }}
+            />
 
-            <div className="pill-solid absolute -left-10 -top-5 !items-start !rounded-2xl !px-3.5 !py-2.5 text-left">
+            <div className="pill-solid absolute -left-16 top-8 !items-start !rounded-2xl !px-3.5 !py-2.5 text-left">
               <p className="text-[0.74rem] font-bold leading-tight">{CAPACITIES[0].title}</p>
             </div>
-            <div className="pill-solid pill-dark absolute -right-12 top-[38%] !items-start !rounded-2xl !px-3.5 !py-2.5 text-left">
+            <div className="pill-solid pill-dark absolute -right-16 top-[48%] !items-start !rounded-2xl !px-3.5 !py-2.5 text-left">
               <p className="text-[0.74rem] font-bold leading-tight">{CAPACITIES[1].title}</p>
             </div>
-            <div className="pill-solid absolute -bottom-6 -left-6 !items-start !rounded-2xl !px-3.5 !py-2.5 text-left" style={{ background: "var(--sand)" }}>
+            <div className="pill-solid absolute -bottom-2 -left-10 !items-start !rounded-2xl !px-3.5 !py-2.5 text-left" style={{ background: "var(--sand)" }}>
               <p className="text-[0.74rem] font-bold leading-tight" style={{ color: "var(--ink)" }}>
                 {CAPACITIES[2].title}
               </p>
@@ -130,9 +134,32 @@ export default function HorizontalDeck() {
         </div>
       </section>
 
-      {/* ================= SLIDE 3 — PRESENCIA EN MEDIOS ================= */}
+      {/* ================= SLIDE 3 — EDITORIAL STATEMENT BREAK ================= */}
       <section
         id="deck-slide-3"
+        className="relative flex w-full flex-col justify-center overflow-hidden rounded-[22px] px-12 py-8"
+        style={{ aspectRatio: "16 / 9", background: "var(--ink)" }}
+      >
+        <div className="flex items-center justify-between">
+          <Wordmark dark />
+          <span className="text-[0.68rem] font-semibold tracking-[0.1em]" style={{ color: "rgba(255,255,255,0.55)" }}>{YEAR}</span>
+        </div>
+        <div className="mt-8 flex items-start gap-5">
+          <span className="mt-3 text-[1.3rem]" style={{ color: "#8be9df" }} aria-hidden>→</span>
+          <div>
+            <p className="display-statement text-[3.4rem]" style={{ color: "#fff" }}>
+              Todo en tu vida es <em style={{ color: "#8be9df" }}>agua</em>.
+            </p>
+            <p className="mt-4 text-[1rem]" style={{ color: "rgba(255,255,255,0.6)" }}>
+              Y entenderla cambia la manera de actuar.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= SLIDE 4 — PRESENCIA EN MEDIOS ================= */}
+      <section
+        id="deck-slide-4"
         className="relative flex w-full flex-col overflow-hidden rounded-[22px] px-10 py-8"
         style={{ aspectRatio: "16 / 9", background: "#fff", border: "1px solid var(--line)" }}
       >
@@ -141,19 +168,24 @@ export default function HorizontalDeck() {
           <span className="text-[0.68rem] font-semibold tracking-[0.1em]" style={{ color: "var(--ink-faint)" }}>{YEAR}</span>
         </div>
 
-        <span className="eyebrow-pill mt-6 w-fit">02 · Presencia en medios</span>
+        <div className="kicker mt-6">02 · Presencia en medios</div>
         <h2 className="mt-4 text-[1.55rem] leading-[1.1]">
           <span className="heading-script">Su conocimiento ya circula</span>{" "}
           <span className="heading-bold">fuera de sus propias redes</span>
         </h2>
 
-        <div className="mt-6 grid flex-1 grid-cols-4 gap-4">
-          {MEDIA_PRESENCE.map((m) => (
-            <div key={m.medio} className="flat-card flex flex-col p-4">
-              <p className="text-[0.88rem] font-bold" style={{ color: "var(--accent-deep)" }}>
+        <div className="mt-7 grid flex-1 grid-cols-4">
+          {MEDIA_PRESENCE.map((m, i) => (
+            <div
+              key={m.medio}
+              className="flex flex-col px-5 first:pl-0"
+              style={{ borderLeft: i > 0 ? "1px solid var(--line)" : "none" }}
+            >
+              <span className="ed-index">0{i + 1}</span>
+              <p className="mt-2 text-[0.92rem] font-bold" style={{ color: "var(--ink)" }}>
                 {m.medio}
               </p>
-              <p className="mt-1.5 text-[0.76rem] leading-snug" style={{ color: "var(--ink-soft)" }}>
+              <p className="mt-1.5 text-[0.78rem] leading-snug" style={{ color: "var(--ink-soft)" }}>
                 {m.nota}
               </p>
             </div>
@@ -164,9 +196,9 @@ export default function HorizontalDeck() {
         </p>
       </section>
 
-      {/* ================= SLIDE 4 — TARIFARIO ================= */}
+      {/* ================= SLIDE 5 — TARIFARIO ================= */}
       <section
-        id="deck-slide-4"
+        id="deck-slide-5"
         className="relative grid w-full overflow-hidden rounded-[22px] grid-cols-[0.75fr_1.25fr]"
         style={{ aspectRatio: "16 / 9", background: "#fff" }}
       >
@@ -176,23 +208,29 @@ export default function HorizontalDeck() {
             <p className="font-display text-[1.7rem] italic leading-[1.05] text-white">Tarifario</p>
             <p className="text-[1.7rem] font-extrabold leading-[1.05] text-white">de colaboraciones</p>
           </div>
-          <div
-            className="h-24 w-24 overflow-hidden rounded-xl"
-            style={{ border: "3px solid rgba(255,255,255,0.85)" }}
-          >
+          <div className="relative h-32 w-24 overflow-hidden">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={PERSON.photo} alt={PERSON.name} className="h-full w-full object-cover" />
+            <img
+              src={PERSON.photoCutout}
+              alt={PERSON.name}
+              className="h-full w-full object-contain object-bottom"
+            />
           </div>
         </div>
 
         <div className="flex flex-col justify-center px-9 py-8">
-          <div className="flex flex-col gap-4">
-            {RATES.map((r) => (
-              <div key={r.formato} className="flex items-center justify-between gap-4 py-3" style={{ borderLeft: "3px solid var(--accent)", paddingLeft: "1rem" }}>
-                <div>
-                  <p className="text-[0.92rem] font-semibold" style={{ color: "var(--ink)" }}>{r.formato}</p>
-                  <p className="mt-0.5 text-[0.76rem]" style={{ color: "var(--ink-faint)" }}>{r.incluye}</p>
-                </div>
+          <div>
+            {RATES.map((r, i) => (
+              <div
+                key={r.formato}
+                className="flex items-baseline justify-between gap-4 py-3"
+                style={{ borderTop: i > 0 ? "1px solid var(--line)" : "none" }}
+              >
+                <p>
+                  <span className="text-[0.92rem] font-semibold" style={{ color: "var(--ink)" }}>{r.formato}</span>
+                  <br />
+                  <span className="text-[0.76rem]" style={{ color: "var(--ink-faint)" }}>{r.incluye}</span>
+                </p>
                 <p className="stat-number shrink-0 text-[1.6rem]" style={{ color: "var(--accent)" }}>
                   S/{r.precio}
                 </p>
@@ -209,9 +247,9 @@ export default function HorizontalDeck() {
         </div>
       </section>
 
-      {/* ================= SLIDE 5 — CONTACTO ================= */}
+      {/* ================= SLIDE 6 — CONTACTO ================= */}
       <section
-        id="deck-slide-5"
+        id="deck-slide-6"
         className="relative flex w-full flex-col items-center justify-center overflow-hidden rounded-[22px] px-10 py-8 text-center"
         style={{ aspectRatio: "16 / 9", background: "var(--panel-gradient)" }}
       >

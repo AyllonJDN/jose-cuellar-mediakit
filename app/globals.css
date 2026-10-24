@@ -60,7 +60,46 @@ body {
   font-family: var(--font-sans);
   font-weight: 800;
   color: var(--accent);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
+}
+
+/* ---------- Big poster-style statement: heavy all-caps sans, one or two
+   words can switch to the italic serif for an editorial accent (the
+   "ALINEA, AGRUPA Y RECORTA" reference). Used sparingly, once per page. ---------- */
+.display-statement {
+  font-family: var(--font-sans);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 0.92;
+  color: var(--ink);
+}
+.display-statement em {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  text-transform: none;
+  color: var(--accent-deep);
+}
+
+/* ---------- Kicker: a plain tracked label with a rule, the editorial
+   alternative to the pill eyebrow — used above list/index sections ---------- */
+.kicker {
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.kicker::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--line);
 }
 
 /* ---------- Eyebrow: thin bordered pill, not filled ---------- */
@@ -117,6 +156,29 @@ body {
   font-family: var(--font-display);
   font-style: italic;
   line-height: 0.95;
+}
+
+/* ---------- Editorial index row: a big italic serif number, a bold
+   label and a note, separated by a hairline rule — the magazine-index
+   alternative to a symmetric card grid. Used for "Presencia en medios"
+   and the rate list. ---------- */
+.ed-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.1rem;
+  align-items: baseline;
+  padding: 1.1rem 0;
+  border-top: 1px solid var(--line);
+}
+.ed-row:last-child {
+  border-bottom: 1px solid var(--line);
+}
+.ed-index {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.4rem;
+  color: var(--accent);
+  line-height: 1;
 }
 
 /* ---------- Reveal on scroll ---------- */

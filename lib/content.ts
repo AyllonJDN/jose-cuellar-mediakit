@@ -12,6 +12,7 @@ export const PERSON = {
   creatorOf: "El Pez en el Agua",
   tagline: "Todo en tu vida es agua.",
   photo: "/photos/jose.jpg",
+  photoCutout: "/photos/jose-cutout.png",
 };
 
 export const BIO = [

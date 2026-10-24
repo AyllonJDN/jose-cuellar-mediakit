@@ -17,7 +17,7 @@ export default function VerticalDoc() {
   return (
     <div className="mx-auto max-w-[760px]" style={{ background: "var(--paper)" }}>
       {/* ---------- COVER (the one solid-color panel in the whole doc) ---------- */}
-      <section className="relative overflow-hidden px-7 pb-12 pt-8 sm:px-12 sm:pt-10" style={{ background: "var(--panel-gradient)" }}>
+      <section className="relative overflow-hidden px-7 pt-8 sm:px-12 sm:pt-10" style={{ background: "var(--panel-gradient)" }}>
         <div className="ripple" style={{ width: 360, height: 360, background: "#4fd9cb", top: -160, right: -140 }} />
 
         <div className="relative flex items-center justify-between">
@@ -27,33 +27,34 @@ export default function VerticalDoc() {
           <span className="text-[0.72rem] font-semibold tracking-[0.1em]" style={{ color: "rgba(255,255,255,0.7)" }}>{YEAR}</span>
         </div>
 
-        <div className="relative mt-8 flex flex-col items-center gap-6 text-center sm:mt-10">
-          <div
-            className="h-36 w-28 overflow-hidden rounded-2xl sm:h-44 sm:w-36"
-            style={{ border: "3px solid rgba(255,255,255,0.9)", boxShadow: "0 20px 44px -16px rgba(0,0,0,0.5)" }}
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={PERSON.photo} alt={PERSON.name} className="h-full w-full object-cover" />
-          </div>
-
-          <div>
-            <p className="text-[0.95rem]" style={{ fontFamily: "var(--font-display)", fontStyle: "italic", color: "rgba(255,255,255,0.85)" }}>
-              {PERSON.role}
-            </p>
-            <h1
-              className="mt-2 text-[2.6rem] leading-[0.96] font-extrabold text-white sm:text-[3.2rem]"
-              style={{ fontFamily: "var(--font-sans)", letterSpacing: "-0.02em" }}
-            >
-              {PERSON.firstName} {PERSON.lastName}
-            </h1>
-          </div>
-
-          <p className="text-base" style={{ fontFamily: "var(--font-display)", fontStyle: "italic", color: "#e9c77e" }}>
-            “{PERSON.tagline}”
+        <div className="relative mt-6 text-center">
+          <p className="text-[0.95rem]" style={{ fontFamily: "var(--font-display)", fontStyle: "italic", color: "rgba(255,255,255,0.85)" }}>
+            {PERSON.role}
           </p>
+          <h1
+            className="mt-2 text-[3rem] leading-[0.92] font-extrabold text-white sm:text-[3.8rem]"
+            style={{ fontFamily: "var(--font-sans)", letterSpacing: "-0.025em" }}
+          >
+            {PERSON.firstName} {PERSON.lastName}
+          </h1>
         </div>
 
-        <div className="relative mt-9 grid grid-cols-2 gap-4 pt-5 text-left" style={{ borderTop: "1px solid rgba(255,255,255,0.2)" }}>
+        {/* Large background-free cutout — the hero photo, not a thumbnail */}
+        <div className="relative mx-auto mt-4 flex w-full max-w-[340px] justify-center sm:max-w-[400px]">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={PERSON.photoCutout}
+            alt={PERSON.name}
+            className="w-full"
+            style={{ filter: "drop-shadow(0 28px 36px rgba(0,0,0,0.35))" }}
+          />
+        </div>
+
+        <p className="relative -mt-2 text-center text-base" style={{ fontFamily: "var(--font-display)", fontStyle: "italic", color: "#e9c77e" }}>
+          “{PERSON.tagline}”
+        </p>
+
+        <div className="relative mt-7 grid grid-cols-2 gap-4 border-t pb-8 pt-5 text-left" style={{ borderColor: "rgba(255,255,255,0.2)" }}>
           <div>
             <p className="text-[0.62rem] font-bold tracking-[0.1em]" style={{ color: "rgba(255,255,255,0.55)" }}>CREADOR DE</p>
             <p className="mt-1 text-sm font-semibold text-white">{PERSON.creatorOf}</p>
@@ -71,22 +72,24 @@ export default function VerticalDoc() {
           <span className="eyebrow-pill">01 · Quién es</span>
         </Reveal>
         <Reveal delay={70}>
-          <h2 className="mt-4 text-[1.7rem] leading-[1.12] sm:text-[2.05rem]">
+          <h2 className="mt-4 text-[1.9rem] leading-[1.08] sm:text-[2.4rem]">
             <span className="heading-script">Del sector del agua</span>
             <br />
             <span className="heading-bold">a una conversación pública</span>
           </h2>
         </Reveal>
-        {BIO.map((p, i) => (
-          <Reveal key={i} delay={140 + i * 70}>
-            <p className="mt-4 text-[1rem] leading-relaxed" style={{ color: "var(--ink-soft)" }}>
-              {p}
-            </p>
-          </Reveal>
-        ))}
+        <div className="mt-6 max-w-[42rem]">
+          {BIO.map((p, i) => (
+            <Reveal key={i} delay={140 + i * 70}>
+              <p className={`text-[1.02rem] leading-relaxed ${i > 0 ? "mt-4" : ""}`} style={{ color: "var(--ink-soft)" }}>
+                {p}
+              </p>
+            </Reveal>
+          ))}
+        </div>
 
         <Reveal delay={320}>
-          <p className="mt-6 text-[0.95rem] leading-relaxed" style={{ color: "var(--ink-soft)" }}>
+          <p className="mt-6 max-w-[42rem] text-[0.95rem] leading-relaxed" style={{ color: "var(--ink-soft)" }}>
             {PLATFORMS_BLURB}
           </p>
           <div className="mt-4 flex flex-wrap gap-2.5">
@@ -99,43 +102,67 @@ export default function VerticalDoc() {
         </Reveal>
       </section>
 
+      {/* ---------- EDITORIAL STATEMENT BREAK ---------- */}
+      <section className="px-7 py-14 sm:px-12 sm:py-20" style={{ background: "var(--ink)" }}>
+        <Reveal className="flex items-start gap-4 sm:gap-5">
+          <span className="mt-3 hidden text-[1.3rem] sm:block" style={{ color: "#8be9df" }} aria-hidden>
+            →
+          </span>
+          <p className="display-statement text-[2.5rem] sm:text-[3.4rem]" style={{ color: "#fff" }}>
+            Todo en tu vida es <em style={{ color: "#8be9df" }}>agua</em>.
+          </p>
+        </Reveal>
+        <Reveal delay={90}>
+          <p className="mt-4 pl-0 text-[0.95rem] sm:pl-10" style={{ color: "rgba(255,255,255,0.6)" }}>
+            Y entenderla cambia la manera de actuar.
+          </p>
+        </Reveal>
+      </section>
+
       {/* ---------- QUÉ LO DIFERENCIA ---------- */}
       <section className="px-7 py-12 sm:px-12 sm:py-14" style={{ background: "var(--accent-pale)" }}>
         <Reveal>
           <span className="eyebrow-pill" style={{ background: "#fff" }}>02 · Qué lo diferencia</span>
         </Reveal>
         <Reveal delay={70}>
-          <h2 className="mt-4 text-[1.5rem] leading-[1.15] sm:text-[1.85rem]">
+          <h2 className="mt-4 text-[1.6rem] leading-[1.12] sm:text-[2rem]">
             <span className="heading-script">Tres capacidades</span>{" "}
             <span className="heading-bold">que rara vez aparecen juntas</span>
           </h2>
         </Reveal>
 
-        <div className="mt-7 flex flex-col items-center gap-6 sm:flex-row sm:items-start">
-          <Reveal delay={120} className="shrink-0">
+        <div className="relative mt-10 flex flex-col items-center">
+          <Reveal className="relative w-full max-w-[280px]">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={PERSON.photoCutout}
+              alt={PERSON.name}
+              className="w-full"
+              style={{ filter: "drop-shadow(0 22px 30px rgba(10,167,189,0.28))" }}
+            />
+            <div className="pill-solid absolute -left-6 top-6 !items-start !rounded-2xl !px-3.5 !py-2.5 text-left sm:-left-16">
+              <p className="text-[0.76rem] font-bold leading-tight">{CAPACITIES[0].title}</p>
+            </div>
+            <div className="pill-solid pill-dark absolute -right-4 top-[42%] !items-start !rounded-2xl !px-3.5 !py-2.5 text-left sm:-right-14">
+              <p className="text-[0.76rem] font-bold leading-tight">{CAPACITIES[1].title}</p>
+            </div>
             <div
-              className="h-32 w-32 overflow-hidden rounded-full sm:h-36 sm:w-36"
-              style={{ border: "4px solid #fff", boxShadow: "0 16px 32px -14px rgba(10,167,189,0.4)" }}
+              className="pill-solid absolute -bottom-3 left-2 !items-start !rounded-2xl !px-3.5 !py-2.5 text-left sm:left-10"
+              style={{ background: "var(--sand)" }}
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={PERSON.photo} alt={PERSON.name} className="h-full w-full object-cover" />
+              <p className="text-[0.76rem] font-bold leading-tight" style={{ color: "var(--ink)" }}>
+                {CAPACITIES[2].title}
+              </p>
             </div>
           </Reveal>
 
-          <div className="flex w-full flex-col gap-3">
+          <div className="mt-20 flex w-full flex-col gap-5 sm:mt-24">
             {CAPACITIES.map((c, i) => (
-              <Reveal key={c.title} delay={180 + i * 80}>
-                <div className="pill-solid w-full !items-start !rounded-2xl !px-4 !py-3 text-left">
-                  {/* A single text block (not two stacked <p>s) — html2canvas's
-                      own text-layout engine silently drops the first of two
-                      stacked block paragraphs inside a flex pill under some
-                      conditions; one <p> with a <br/> sidesteps that bug. */}
-                  <p>
-                    <span className="text-[0.92rem] font-bold">{c.title}</span>
-                    <br />
-                    <span className="text-[0.8rem] font-normal opacity-90">{c.body}</span>
-                  </p>
-                </div>
+              <Reveal key={c.title} delay={120 + i * 80} className="flex gap-4 border-t pt-4" style={{ borderColor: "var(--line)" }}>
+                <span className="ed-index shrink-0">0{i + 1}</span>
+                <p className="text-[0.92rem] leading-relaxed" style={{ color: "var(--ink-soft)" }}>
+                  <span className="font-bold" style={{ color: "var(--ink)" }}>{c.title}.</span> {c.body}
+                </p>
               </Reveal>
             ))}
           </div>
@@ -145,25 +172,31 @@ export default function VerticalDoc() {
       {/* ---------- PRESENCIA EN MEDIOS ---------- */}
       <section className="px-7 py-12 sm:px-12 sm:py-14">
         <Reveal>
-          <span className="eyebrow-pill">03 · Presencia en medios</span>
+          <div className="kicker">03 · Presencia en medios</div>
         </Reveal>
         <Reveal delay={70}>
-          <h2 className="mt-4 text-[1.5rem] leading-[1.15] sm:text-[1.85rem]">
+          <h2 className="mt-4 text-[1.6rem] leading-[1.12] sm:text-[2rem]">
             <span className="heading-script">Su conocimiento ya circula</span>
             <br />
             <span className="heading-bold">fuera de sus propias redes</span>
           </h2>
         </Reveal>
 
-        <div className="mt-6 grid grid-cols-2 gap-3">
+        <div className="mt-6">
           {MEDIA_PRESENCE.map((m, i) => (
-            <Reveal key={m.medio} delay={140 + i * 70}>
-              <div className="flat-card h-full p-4">
-                <p className="text-[0.86rem] font-bold" style={{ color: "var(--accent-deep)" }}>
-                  {m.medio}
-                </p>
-                <p className="mt-1.5 text-[0.78rem] leading-snug" style={{ color: "var(--ink-soft)" }}>
-                  {m.nota}
+            <Reveal key={m.medio} delay={120 + i * 60}>
+              <div className="ed-row">
+                <span className="ed-index">0{i + 1}</span>
+                {/* One flex <p> with two <span> children — not two stacked
+                    block <p>s — avoids html2canvas dropping the first line
+                    (see the capacity-pill fix above). */}
+                <p className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
+                  <span className="text-[1rem] font-bold" style={{ color: "var(--ink)" }}>
+                    {m.medio}
+                  </span>
+                  <span className="text-[0.86rem] leading-snug sm:max-w-[22rem] sm:text-right" style={{ color: "var(--ink-soft)" }}>
+                    {m.nota}
+                  </span>
                 </p>
               </div>
             </Reveal>
@@ -179,10 +212,10 @@ export default function VerticalDoc() {
       {/* ---------- TARIFARIO ---------- */}
       <section className="px-7 py-12 sm:px-12 sm:py-14" style={{ background: "var(--accent-pale)" }}>
         <Reveal>
-          <span className="eyebrow-pill" style={{ background: "#fff" }}>04 · Tarifario de colaboraciones</span>
+          <div className="kicker">04 · Tarifario de colaboraciones</div>
         </Reveal>
         <Reveal delay={70}>
-          <h2 className="mt-4 text-[1.5rem] leading-[1.15] sm:text-[1.85rem]">
+          <h2 className="mt-4 text-[1.6rem] leading-[1.12] sm:text-[2rem]">
             <span className="heading-script">Formatos disponibles</span>{" "}
             <span className="heading-bold">para marcas</span>
           </h2>
@@ -191,27 +224,31 @@ export default function VerticalDoc() {
           </p>
         </Reveal>
 
-        <Reveal delay={150}>
-          <div className="mt-6 flex flex-col gap-3">
-            {RATES.map((r) => (
-              <div key={r.formato} className="flat-card flex items-center justify-between gap-4 p-4">
-                <div>
-                  <p className="text-[0.92rem] font-semibold" style={{ color: "var(--ink)" }}>
+        <div className="mt-6">
+          {RATES.map((r, i) => (
+            <Reveal key={r.formato} delay={120 + i * 70}>
+              <div className="flex items-baseline justify-between gap-4 border-t py-4" style={{ borderColor: "var(--line)" }}>
+                {/* One <p> with a <br/> instead of two stacked <p>s — see the
+                    capacity-pill fix note above for why. */}
+                <p>
+                  <span className="text-[0.95rem] font-semibold" style={{ color: "var(--ink)" }}>
                     {r.formato}
-                  </p>
-                  <p className="mt-1 text-[0.8rem]" style={{ color: "var(--ink-faint)" }}>
+                  </span>
+                  <br />
+                  <span className="text-[0.8rem]" style={{ color: "var(--ink-faint)" }}>
                     {r.incluye}
-                  </p>
-                </div>
-                <p className="stat-number shrink-0 text-[1.5rem]" style={{ color: "var(--accent)" }}>
+                  </span>
+                </p>
+                <p className="stat-number shrink-0 text-[1.7rem]" style={{ color: "var(--accent)" }}>
                   S/{r.precio}
                 </p>
               </div>
-            ))}
-          </div>
-        </Reveal>
+            </Reveal>
+          ))}
+          <div style={{ borderTop: "1px solid var(--line)" }} />
+        </div>
 
-        <Reveal delay={260}>
+        <Reveal delay={320}>
           <div className="outline-box mt-6 p-5">
             {RATE_NOTES.map((n, i) => (
               <p key={i} className={`text-[0.84rem] ${i > 0 ? "mt-2" : ""}`} style={{ color: "var(--ink-soft)" }}>
