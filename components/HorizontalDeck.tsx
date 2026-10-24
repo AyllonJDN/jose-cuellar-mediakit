@@ -1,7 +1,6 @@
 import {
   PERSON,
   BIO,
-  PLATFORMS,
   CAPACITIES,
   RATES,
   RATE_NOTES,
@@ -17,7 +16,7 @@ export default function HorizontalDeck() {
         className="relative grid w-full overflow-hidden rounded-[22px] grid-cols-[1.05fr_0.95fr]"
         style={{ aspectRatio: "16 / 9", background: "#fff" }}
       >
-        <div className="relative flex flex-col justify-between overflow-hidden px-10 py-8" style={{ background: "var(--ink)" }}>
+        <div className="relative flex flex-col justify-center gap-10 overflow-hidden px-10 py-8" style={{ background: "var(--ink)" }}>
           <div className="relative">
             <p className="text-[0.85rem]" style={{ fontFamily: "var(--font-display)", fontStyle: "italic", color: "rgba(255,255,255,0.8)" }}>
               {PERSON.role}
@@ -56,21 +55,14 @@ export default function HorizontalDeck() {
       >
         <div className="flex flex-col justify-center pr-6">
           <p className="text-[0.95rem] font-semibold" style={{ color: "var(--accent-deep)" }}>¿Quién es José Cuellar?</p>
-          <h2 className="mt-3 text-[1.55rem] leading-[1.1]">
+          <h2 className="mt-6 text-[1.55rem] leading-[1.1]">
             <span className="heading-script">Del sector del agua</span>
             <br />
             <span className="heading-bold">a una conversación pública</span>
           </h2>
-          <p className="mt-3 max-w-[32rem] text-[0.86rem] leading-relaxed" style={{ color: "var(--ink-soft)" }}>
+          <p className="mt-5 max-w-[32rem] text-[0.86rem] leading-relaxed" style={{ color: "var(--ink-soft)" }}>
             {BIO[0]}
           </p>
-          <div className="mt-4 flex flex-wrap gap-2">
-            {PLATFORMS.map((p) => (
-              <span key={p} className="pill-solid pill-dark !px-3 !py-1.5 !text-[0.74rem]">
-                {p}
-              </span>
-            ))}
-          </div>
         </div>
 
         <div className="relative flex h-full items-center justify-center">
